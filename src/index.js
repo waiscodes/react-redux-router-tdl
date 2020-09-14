@@ -6,6 +6,7 @@ import toDosReducer from './reducers/todos';
 import { addNewToDo } from './actions/todos';
 import { Provider } from 'react-redux';
 import ToDos from './components/ToDos';
+import ToDoList from './components/ToDoList';
 
 /**
  * Redux Store
@@ -40,7 +41,9 @@ store.dispatch( addNewToDo( "Review React" ) );
 // wheverever we need it (whichever component needs it.)
 ReactDOM.render(
   <Provider store={store}>
+    <h1>React-Redux To-Do List (TECHCareers)</h1>
     <ToDos />
+    <ToDoList />
   </Provider>,
   document.getElementById('root')
 );

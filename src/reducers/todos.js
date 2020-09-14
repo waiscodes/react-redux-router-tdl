@@ -16,7 +16,7 @@ const toDosReducer = ( state = [], action ) => {
       // Prepare a new task object.
       const newTask = {
         task: action.payload
-      }
+      };
       // Create a COPY of the original state array.
       const newToDoList = [...state];
       // Add the new task to the new array.
