@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import toDosReducer from './reducers/todos';
 import { addNewToDo } from './actions/todos';
 import { Provider } from 'react-redux';
+import ToDos from './components/ToDos';
 
 /**
  * Redux Store
@@ -12,7 +13,10 @@ import { Provider } from 'react-redux';
  * our global data exists. We pass in the reducer
  * so it will know how to handle any actions (requests.)
  */
-const store = createStore( toDosReducer );
+const store = createStore(
+  toDosReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 // We can run instructions every time the state/store is
 // updated by using the store's "subscribe" method.
@@ -35,7 +39,7 @@ store.dispatch( addNewToDo( "Review React" ) );
 // wheverever we need it (whichever component needs it.)
 ReactDOM.render(
   <Provider store={store}>
-    <></>
+    <ToDos />
   </Provider>,
   document.getElementById('root')
 );
