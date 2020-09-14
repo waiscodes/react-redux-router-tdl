@@ -15,6 +15,7 @@ import ToDos from './components/ToDos';
  */
 const store = createStore(
   toDosReducer,
+  // If we want to use the Redux DevTools, add this argument as well!
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
