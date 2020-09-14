@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 /**
  * Redux Reducer(s)
  * A reducer will actually carry out the request or
@@ -15,6 +17,7 @@ const toDosReducer = ( state = [], action ) => {
     case 'ADD_NEW_TO_DO':
       // Prepare a new task object.
       const newTask = {
+        id: uuidv4(),
         task: action.payload
       };
       // Create a COPY of the original state array.
