@@ -18,6 +18,8 @@ function ToDos ( props )
     // * Because of connect() and <Provider>, we have access to dispatch()
     //   via our "props" for this component.
     props.dispatch( addNewToDo( newTask ) );
+    // Clear the field.
+    setNewTask( '' );
   }
 
   return (
