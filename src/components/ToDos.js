@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { addNewToDo } from '../actions/todos';
 
 function ToDos ( props )
 {
@@ -10,7 +11,13 @@ function ToDos ( props )
   // Add a submit function.
   const submitToDo = event => {
     event.preventDefault(); // Stop the page from reloading!
-
+    // 1) We get our task from local state...
+    // 2) pass it to our action to format a request...
+    // 3) the reducer understands this and
+    // 4) updates our store!
+    // * Because of connect() and <Provider>, we have access to dispatch()
+    //   via our "props" for this component.
+    props.dispatch( addNewToDo( newTask ) );
   }
 
   return (
@@ -25,7 +32,6 @@ function ToDos ( props )
           onChange={ event => { setNewTask( event.target.value ); } } />
         <input type="submit" value="Add New To-Do" />
       </form>
-      <ul></ul>
     </>
   );
 }
