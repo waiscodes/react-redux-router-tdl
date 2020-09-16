@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { createStore } from 'redux';
-import toDosReducer from './reducers/todos';
-import { addNewToDo } from './actions/todos';
-import { Provider } from 'react-redux';
-import ToDos from './components/ToDos';
-import ToDoList from './components/ToDoList';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { createStore } from "redux";
+import toDosReducer from "./reducers/todos";
+import { addNewToDo } from "./actions/todos";
+import { Provider } from "react-redux";
+import ToDos from "./components/ToDos";
+import ToDoList from "./components/ToDoList";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 /**
  * Redux Store
@@ -25,7 +26,7 @@ const store = createStore(
 // It takes a function to execute as its argument, we are
 // using it to console.log() our current state each time
 // that it experiences a change.
-store.subscribe( () => console.log( store.getState() ) );
+store.subscribe(() => console.log(store.getState()));
 
 /**
  * Redux Dispatch
@@ -33,8 +34,8 @@ store.subscribe( () => console.log( store.getState() ) );
  */
 // Dispatch expects a properly formatted action...
 // (otherwise your reducer won't know what to do!)
-store.dispatch( addNewToDo( "Research Redux" ) );
-store.dispatch( addNewToDo( "Review React" ) );
+store.dispatch(addNewToDo("Research Redux"));
+store.dispatch(addNewToDo("Review React"));
 
 // When using Redux, we use the <Provider> component with...
 // a "store" prop to pass our global state info down to...
@@ -42,8 +43,10 @@ store.dispatch( addNewToDo( "Review React" ) );
 ReactDOM.render(
   <Provider store={store}>
     <h1>React-Redux To-Do List (TECHCareers)</h1>
-    <ToDos />
-    <ToDoList />
+    <Router>
+      <Route path="/" component={ToDoList} />
+      <Route path="form" component={ToDos} />
+    </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
